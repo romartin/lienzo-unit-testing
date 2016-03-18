@@ -4,6 +4,7 @@ import com.ait.lienzo.client.core.shape.Layer;
 import com.ait.lienzo.client.core.shape.Rectangle;
 import com.ait.lienzo.client.widget.LienzoPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class MyLienzo {
 
@@ -13,6 +14,7 @@ public class MyLienzo {
     private Rectangle rectangle = new Rectangle(50, 50);
     
     public MyLienzo() {
+        RootPanel.get().add(mainPanel);
         mainPanel.add(panel);
         panel.add(layer);
         layer.add(rectangle);

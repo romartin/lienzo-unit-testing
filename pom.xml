@@ -11,30 +11,58 @@
   <description>Lienzo - Unit Testing</description>
   <packaging>jar</packaging>
 
+  <properties>
+    <version.com.google.gwt>2.7.0</version.com.google.gwt>
+    <version.com.ahome_it.lienzo>2.0.238-RC1</version.com.ahome_it.lienzo>
+    <version.org.junit>4.11</version.org.junit>
+    <version.com.google.gwtmockito>1.1.6</version.com.google.gwtmockito>
+    <version.org.powermock>1.6.4</version.org.powermock>
+  </properties>
 
   <dependencies>
 
     <dependency>
       <groupId>com.ahome-it</groupId>
       <artifactId>lienzo-core</artifactId>
-      <version>2.0.238-RC1</version>
+      <version>${version.com.ahome_it.lienzo}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
-      <version>2.7.0</version>
+      <version>${version.com.google.gwt}</version>
       <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${version.org.junit}</version>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>com.google.gwt.gwtmockito</groupId>
       <artifactId>gwtmockito</artifactId>
-      <version>1.1.6</version>
+      <version>${version.com.google.gwtmockito}</version>
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-module-junit4-legacy</artifactId>
+      <version>${version.org.powermock}</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-mockito</artifactId>
+      <version>${version.org.powermock}</version>
+      <scope>test</scope>
+    </dependency>
+    
   </dependencies>
 
   <build>
