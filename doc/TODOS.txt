@@ -1,0 +1,8 @@
+ <conan_> qmx  roger600_  csadilek  says a combination of powermock and gwtmockito will get you there.
+ <conan_> and that there are some tests in existing codebase for this.
+ <conan_> csadilek  mbarkley  do you have any links?
+ <porcelli> i did something time ago.. and worked nice; ended changing a bit my approach so it didn't enter in our codebase
+ <porcelli> with powermocj and gwtmockito
+ <conan_> porcelli  got a link?
+ <conan_> qmx  roger600_  also search powermockito
+ <csadilek> np, they need to mock some static stuff in lienzo which they can’t change, so powermockito should help them. //qmx roger600_ mbarkley 

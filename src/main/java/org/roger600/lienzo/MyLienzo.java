@@ -11,16 +11,19 @@ public class MyLienzo {
     private LienzoPanel panel = new LienzoPanel(600, 600);
     private Layer layer = new Layer();
     private Rectangle rectangle = new Rectangle(50, 50);
+    private Rectangle rectangle2 = new Rectangle(50, 50);
     
     public MyLienzo() {
         mainPanel.add(panel);
         panel.add(layer);
         layer.add(rectangle);
+        layer.add(rectangle2);
         layer.draw();
     }
     
     public void test() {
         rectangle.setFillColor("#0000FF");
+        rectangle2.setFillColor("#FF00FF");
     }
 
     public Rectangle getRectangle() {
