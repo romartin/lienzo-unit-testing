@@ -12,17 +12,19 @@ public class JavaScriptObject {
     
     public String uuid;
 
+    public JavaScriptObject(String uuid) {
+        this.uuid = uuid;
+    }
+
     public String getUuid() {
         return uuid;
     }
 
-    public static JavaScriptObject build(String uuid) {
-        JavaScriptObject o = new JavaScriptObject();
-        o.uuid = uuid;
-        return o;
+    public JavaScriptObject build(String className) {
+       return build(className, getUuid());
     }
 
-    public static JavaScriptObject build(String className, String uuid) {
+    public JavaScriptObject build(String className, String uuid) {
         try {
             Class clazz = Class.forName(className);
             Constructor c = clazz.getDeclaredConstructors()[0];

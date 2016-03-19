@@ -8,7 +8,7 @@ public class MyJSObject extends com.google.gwt.core.client.JavaScriptObject {
         return JavaScriptObject.createObject().cast();
     }
     
-    protected MyJSObject() {
+    public MyJSObject() {
     }
 
     public final native void put(String name, String value)

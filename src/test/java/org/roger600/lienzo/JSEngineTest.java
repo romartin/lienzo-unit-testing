@@ -22,6 +22,9 @@ public class JSEngineTest {
         holder.setName();
         String n = holder.getName();
         System.out.println("Name is: " + n);
+        holder.setAnotherName();
+        n = holder.getName();
+        System.out.println("Another name is: " + n);
     }
     
 }
