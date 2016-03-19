@@ -1,17 +1,11 @@
 package org.roger600.lienzo;
 
 import com.google.gwt.junit.client.GWTTestCase;
-import org.junit.Before;
 import org.junit.Test;
 
-public class MyLienzoTest extends GWTTestCase {
+public class MyLienzoGwtTest extends GWTTestCase {
     
     private MyLienzo myLienzo;
-
-    @Before
-    public void setup() {
-        
-    }
 
     @Test
     public void test() {
