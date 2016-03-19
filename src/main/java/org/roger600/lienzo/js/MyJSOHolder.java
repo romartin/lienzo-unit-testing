@@ -1,13 +1,13 @@
 package org.roger600.lienzo.js;
 
-public class MyJSObjectHolder {
+public class MyJSOHolder {
     
-    private MyJSObject myJSObject;
-    private MyJSObject myJSObject2;
+    private MyObjectJSO myJSObject;
+    private MyObjectJSO myJSObject2;
 
-    public MyJSObjectHolder() {
-        myJSObject = MyJSObject.make();
-        myJSObject2 = MyJSObject.make();
+    public MyJSOHolder() {
+        myJSObject = MyObjectJSO.make();
+        myJSObject2 = MyObjectJSO.make();
     }
     
     public void setName() {

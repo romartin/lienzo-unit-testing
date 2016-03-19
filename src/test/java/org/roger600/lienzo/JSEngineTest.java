@@ -4,17 +4,17 @@ import com.google.gwtmockito.GwtMockitoTestRunner4;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.roger600.lienzo.js.MyJSObjectHolder;
+import org.roger600.lienzo.js.MyJSOHolder;
 
 @RunWith(GwtMockitoTestRunner4.class)
 public class JSEngineTest {
 
 
-    MyJSObjectHolder holder;
+    MyJSOHolder holder;
     
     @Before
     public void setup() {
-        holder = new MyJSObjectHolder();    
+        holder = new MyJSOHolder();    
     }
 
     @Test
