@@ -1,6 +1,7 @@
 package org.roger600.powermock;
 
 import com.ait.tooling.nativetools.client.NObjectJSO;
+import com.ait.tooling.nativetools.client.collection.NFastArrayList;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Document;
@@ -27,31 +28,51 @@ import static org.powermock.api.support.membermodification.MemberModifier.suppre
 
 public class LienzoMockPolicy implements PowerMockPolicy {
     
-    Document document;
-    FlowPanel flowPanel;
-    NObjectJSO nObjectJSO;
-
     @Override
     public void applyClassLoadingPolicy(MockPolicyClassLoadingSettings settings) {
         
-        // Specify classes to be mocked.
+        // Specify classes to be mocked/stubbed.
         settings.addFullyQualifiedNamesOfClassesToLoadByMockClassloader(
                 com.google.gwt.core.client.GWT.class.getName(),
                 com.google.gwt.core.shared.GWT.class.getName(),
                 Document.class.getName(),
                 JavaScriptObject.class.getName());
 
-        // Specify widgets to be mocked.
+        // Specify widgets to be mocked/stubbed.
        settings.addFullyQualifiedNamesOfClassesToLoadByMockClassloader(getGwtWidgetsToMock());
 
-        // Specify Lienzo assets to be mocked.
-        settings.addFullyQualifiedNamesOfClassesToLoadByMockClassloader(getLienzoAssetsToMock());
+        // Specify Lienzo assets and overlay types to be mocked/stubbed.
+        try {
+            settings.addFullyQualifiedNamesOfClassesToLoadByMockClassloader(getLienzoOverlayTypesToMock());
+            settings.addFullyQualifiedNamesOfClassesToLoadByMockClassloader(getLienzoAssetsToMock());
+        } catch (Exception e) {
+            logError("Error applying class loader policy for lienzo assets / overlay types." , e);
+        }
+
     }
 
     private String[] getLienzoAssetsToMock() {
         return new String[] {
-            NObjectJSO.class.getName()
+            
         };
+    }
+
+    private Class[] getLienzoOverlayTypeClassesToMock() throws Exception {
+        return new Class[] {
+                NObjectJSO.class, 
+                Whitebox.getInnerClassType(NFastArrayList.class, "FastArrayListJSO")
+        };
+    }
+    
+    private String[] getLienzoOverlayTypesToMock() throws Exception {
+        Class[] overlayClasses = getLienzoOverlayTypeClassesToMock();
+        String[] result = new String[overlayClasses.length];
+        int x = 0;
+        for ( Class c : overlayClasses ) {
+            result[x] = c.getName();
+            x++;
+        }
+        return result;
     }
     
     private String[] getGwtWidgetsToMock() {
@@ -62,8 +83,6 @@ public class LienzoMockPolicy implements PowerMockPolicy {
 
     @Override
     public void applyInterceptionPolicy(MockPolicyInterceptionSettings settings) {
-
-        
 
         // GWT & bridge stubbing.
         final Method gwtGetVersionMethod = Whitebox.getMethod(GWT.class, "getVersion");
@@ -85,21 +104,20 @@ public class LienzoMockPolicy implements PowerMockPolicy {
         
 
         // Document stubbing.
+        Document document = mock(Document.class);
         final Method documentGetMethod = Whitebox.getMethod(Document.class, "get");
         settings.stubMethod(documentGetMethod, document);
-
-        // Ensure mocked objects are initialized.
-        initMocks(settings);
 
         // Mock the different GWT widgets.
         mockGwtWidgets(settings);
 
         // Mock the different Lienzo assets.
-        mockLienzoAssets(settings);
+        stubLienzoOverlayTypes(settings);
     }
     
     private void mockGwtWidgets(MockPolicyInterceptionSettings settings) {
         try {
+            FlowPanel flowPanel = mock(FlowPanel.class);
             whenNew(FlowPanel.class).withNoArguments().thenReturn(flowPanel);
             whenNew(FlowPanel.class).withAnyArguments().thenReturn(flowPanel);
         } catch (Exception e) {
@@ -107,25 +125,19 @@ public class LienzoMockPolicy implements PowerMockPolicy {
         }
     }
 
-    private void mockLienzoAssets(MockPolicyInterceptionSettings settings) {
+    private void stubLienzoOverlayTypes(MockPolicyInterceptionSettings settings) {
         try {
-            // NObjectJSO.
-            final Method nOjectJSOMakeMethod = Whitebox.getMethod(NObjectJSO.class, "make");
-            settings.stubMethod(nOjectJSOMakeMethod, nObjectJSO);
             
+            // Stub the "make" method for all lienzo overlay types.
+            Class[] overlayClasses = getLienzoOverlayTypeClassesToMock();
+            for ( Class c : overlayClasses ) {
+                Object type = mock(c);
+                final Method jsoMakeMethod = Whitebox.getMethod(c, "make");
+                settings.stubMethod(jsoMakeMethod, type);
+            }
             
         } catch (Exception e) {
             logError("Error initializing mocks for Lienzo assets in Lienzo Mock Policy.", e);
-        }
-    }
-    
-    private void initMocks(MockPolicyInterceptionSettings settings) {
-        try {
-            this.nObjectJSO = mock(NObjectJSO.class);
-            this.document = mock(Document.class);
-            this.flowPanel = mock(FlowPanel.class);
-        } catch (Exception e) {
-            logError("Error initializing mocks in Lienzo Mock Policy.", e);
         }
     }
     
