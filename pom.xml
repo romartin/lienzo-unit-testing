@@ -52,21 +52,18 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${version.org.junit}</version>
-      <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.powermock</groupId>
       <artifactId>powermock-module-junit4</artifactId>
       <version>${version.org.powermock}</version>
-      <scope>test</scope>
     </dependency>
     
     <dependency>
       <groupId>org.powermock</groupId>
       <artifactId>powermock-api-mockito</artifactId>
       <version>${version.org.powermock}</version>
-      <scope>test</scope>
     </dependency>
     
   </dependencies>
