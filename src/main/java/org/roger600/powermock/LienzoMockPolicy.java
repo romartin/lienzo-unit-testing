@@ -1,5 +1,9 @@
 package org.roger600.powermock;
 
+import com.ait.lienzo.client.core.shape.Node;
+import com.ait.lienzo.client.core.shape.Shape;
+import com.ait.lienzo.client.core.shape.Viewport;
+import com.ait.lienzo.client.widget.LienzoPanel;
 import com.ait.tooling.nativetools.client.NObjectJSO;
 import com.ait.tooling.nativetools.client.collection.NFastArrayList;
 import com.google.gwt.core.client.GWT;
@@ -53,7 +57,8 @@ public class LienzoMockPolicy implements PowerMockPolicy {
 
     private String[] getLienzoAssetsToMock() {
         return new String[] {
-            
+            Shape.class.getName(),
+            Node.class.getName()
         };
     }
 
@@ -111,18 +116,16 @@ public class LienzoMockPolicy implements PowerMockPolicy {
         // Mock the different GWT widgets.
         mockGwtWidgets(settings);
 
-        // Mock the different Lienzo assets.
+        // Stub the different Lienzo overlay types.
         stubLienzoOverlayTypes(settings);
+
+        // Stub the different Lienzo assets.
+        stubLienzoAssets(settings);
     }
-    
-    private void mockGwtWidgets(MockPolicyInterceptionSettings settings) {
-        try {
-            FlowPanel flowPanel = mock(FlowPanel.class);
-            whenNew(FlowPanel.class).withNoArguments().thenReturn(flowPanel);
-            whenNew(FlowPanel.class).withAnyArguments().thenReturn(flowPanel);
-        } catch (Exception e) {
-            logError("Error initializing mocks for GWT Widgets in Lienzo Mock Policy.", e);
-        }
+
+    private void stubLienzoAssets(MockPolicyInterceptionSettings settings) {
+        suppress(method(JavaScriptObject.class, "cast"));
+        suppress(method(Node.class, "cast"));
     }
 
     private void stubLienzoOverlayTypes(MockPolicyInterceptionSettings settings) {
@@ -138,6 +141,16 @@ public class LienzoMockPolicy implements PowerMockPolicy {
             
         } catch (Exception e) {
             logError("Error initializing mocks for Lienzo assets in Lienzo Mock Policy.", e);
+        }
+    }
+
+    private void mockGwtWidgets(MockPolicyInterceptionSettings settings) {
+        try {
+            FlowPanel flowPanel = mock(FlowPanel.class);
+            whenNew(FlowPanel.class).withNoArguments().thenReturn(flowPanel);
+            whenNew(FlowPanel.class).withAnyArguments().thenReturn(flowPanel);
+        } catch (Exception e) {
+            logError("Error initializing mocks for GWT Widgets in Lienzo Mock Policy.", e);
         }
     }
     
