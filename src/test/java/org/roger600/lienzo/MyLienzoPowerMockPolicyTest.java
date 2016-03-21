@@ -32,8 +32,6 @@ public class MyLienzoPowerMockPolicyTest {
 
     @Test
     public void test() throws Exception {
-        //whenNew(FlowPanel.class).withNoArguments().thenReturn(null);
-        //whenNew(FlowPanel.class).withArguments(anyString()).thenReturn(null);
         myLienzo = new MyLienzo();
         myLienzo.test();
         String color = myLienzo.getRectangle().getFillColor();
