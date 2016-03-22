@@ -1,14 +1,8 @@
 package org.roger600.lienzo;
 
-import com.ait.lienzo.client.core.shape.*;
-import com.ait.lienzo.client.core.types.Transform;
-import com.ait.tooling.nativetools.client.NArrayBaseJSO;
-import com.ait.tooling.nativetools.client.NObjectBaseJSO;
-import com.ait.tooling.nativetools.client.collection.NFastArrayList;
-import com.ait.tooling.nativetools.client.collection.NFastStringMap;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.ait.lienzo.client.core.shape.Rectangle;
 import com.google.gwtmockito.GwtMockitoTestRunner;
-import com.google.gwtmockito.WithClassesToStub;
+import com.google.gwtmockito.lienzo.util.StubUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,6 +31,15 @@ public class MyLienzoStubsTest {
         Assert.assertEquals("#0000FF", color1);
         Assert.assertEquals("#FF00FF", color2);
         Assert.assertEquals(2, size);
+    }
+
+    @Test
+    public void test2() throws Exception {
+        test();
+
+        Rectangle rectangle = (Rectangle) myLienzo.getLayer().getChildNodes().get(0);
+        StubUtils.invoke(rectangle, "doAMethodAddTest");
+
     }
     
 }
