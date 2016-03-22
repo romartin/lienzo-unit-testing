@@ -26,6 +26,10 @@ public class MyLienzo {
         rectangle2.setFillColor("#FF00FF");
     }
 
+    public Layer getLayer() {
+        return layer;
+    }
+
     public Rectangle getRectangle() {
         return rectangle;
     }
