@@ -30,7 +30,4 @@ public class MyLienzo {
         return layer;
     }
 
-    public Rectangle getRectangle() {
-        return rectangle;
-    }
 }
