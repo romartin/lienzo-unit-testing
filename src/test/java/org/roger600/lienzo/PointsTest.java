@@ -5,10 +5,11 @@ import com.google.gwtmockito.GwtMockitoTestRunner;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.roger600.lienzo.mockito.LienzoMockitoTestRunner;
 
 
-@RunWith(GwtMockitoTestRunner.class)
-public class QmxTest {
+@RunWith(LienzoMockitoTestRunner.class)
+public class PointsTest {
     
 
     @Before

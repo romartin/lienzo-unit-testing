@@ -29,15 +29,9 @@
     </dependency>
 
     <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <version>1.9.5</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.google.gwt.gwtmockito</groupId>
-      <artifactId>gwtmockito</artifactId>
-      <version>1.1.6-lienzo-runner</version>
+      <groupId>org.roger600</groupId>
+      <artifactId>lienzo-mockito</artifactId>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
 
     <dependency>

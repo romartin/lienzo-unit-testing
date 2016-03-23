@@ -3,11 +3,11 @@ package org.roger600.lienzo;
 import com.ait.lienzo.client.core.shape.Rectangle;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwtmockito.GwtMockitoTestRunner;
-import com.google.gwtmockito.lienzo.util.StubUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.roger600.lienzo.mockito.util.StubUtils;
 
 
 @RunWith(GwtMockitoTestRunner.class)
