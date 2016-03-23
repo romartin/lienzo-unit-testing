@@ -1,7 +1,6 @@
 package org.roger600.lienzo;
 
 import com.ait.lienzo.client.core.types.Point2D;
-import com.google.gwtmockito.GwtMockitoTestRunner;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

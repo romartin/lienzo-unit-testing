@@ -1,5 +1,6 @@
 package org.roger600.lienzo;
 
+import com.ait.lienzo.client.core.shape.Node;
 import com.ait.lienzo.client.core.shape.Rectangle;
 import org.junit.Assert;
 import org.junit.Before;
@@ -45,7 +46,12 @@ public class MyLienzoStubsTest {
 
         Rectangle rectangle = (Rectangle) myLienzo.getLayer().getChildNodes().get(0);
 
-        // EventUtils.click(rectangle, 50, 50);
+        EventUtils.click(rectangle, 50, 50);
+        prova(rectangle);
+    }
+    
+    private void prova(Node node) {
+        System.out.println(node);
     }
     
 }
