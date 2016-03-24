@@ -8,15 +8,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.roger600.lienzo.mockito.LienzoMockitoTestRunner;
 import org.roger600.lienzo.mockito.util.EventUtils;
-import org.roger600.lienzo.mockito.util.StubUtils;
 
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @RunWith(LienzoMockitoTestRunner.class)
 public class MyLienzoStubsSpiedTest {
@@ -54,15 +50,6 @@ public class MyLienzoStubsSpiedTest {
 
     @Test
     public void test2() throws Exception {
-        test();
-
-        Rectangle rectangle = (Rectangle) myLienzo.getLayer().getChildNodes().get(0);
-        StubUtils.invoke(rectangle, "doAMethodAddTest");
-    }
-
-
-    @Test
-    public void test3() throws Exception {
 
         Rectangle rectangle = (Rectangle) myLienzo.getLayer().getChildNodes().get(0);
 

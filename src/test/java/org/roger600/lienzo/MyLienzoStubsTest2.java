@@ -1,13 +1,11 @@
 package org.roger600.lienzo;
 
 import com.ait.lienzo.client.core.shape.Rectangle;
-import com.google.gwt.event.dom.client.ClickEvent;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.roger600.lienzo.mockito.LienzoMockitoTestRunner;
-import org.roger600.lienzo.mockito.util.StubUtils;
 
 
 @RunWith(LienzoMockitoTestRunner.class)
@@ -34,49 +32,4 @@ public class MyLienzoStubsTest2 {
         Assert.assertEquals(2, size);
     }
 
-    @Test
-    public void test2() throws Exception {
-        test();
-
-        Rectangle rectangle = (Rectangle) myLienzo.getLayer().getChildNodes().get(0);
-        StubUtils.invoke(rectangle, "doAMethodAddTest");
-
-        
-        rectangle.fireEvent(new ClickEvent(){
-            
-            @Override
-            public int getClientX() {
-                return 50;
-            }
-
-            @Override
-            public int getClientY() {
-                return 50;
-            }
-
-            @Override
-            public boolean isAltKeyDown() {
-                return false;
-            }
-
-            @Override
-            public boolean isControlKeyDown() {
-                return false;
-            }
-
-            @Override
-            public boolean isMetaKeyDown() {
-                return false;
-            }
-
-            @Override
-            public boolean isShiftKeyDown() {
-                return false;
-            }
-        });
-
-        //myLienzo.getPanel().fireEvent(new ClickEvent(){});
-
-    }
-    
 }

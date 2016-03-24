@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.roger600.lienzo.mockito.LienzoMockitoTestRunner;
 import org.roger600.lienzo.mockito.util.EventUtils;
 import org.roger600.lienzo.mockito.util.LienzoMockitoLogger;
-import org.roger600.lienzo.mockito.util.StubUtils;
 
 
 @RunWith(LienzoMockitoTestRunner.class)
@@ -39,15 +38,6 @@ public class MyLienzoStubsTest {
 
     @Test
     public void test2() throws Exception {
-        test();
-
-        Rectangle rectangle = (Rectangle) myLienzo.getLayer().getChildNodes().get(0);
-        StubUtils.invoke(rectangle, "doAMethodAddTest");
-    }
-
-
-    @Test
-    public void test3() throws Exception {
 
         Rectangle rectangle = (Rectangle) myLienzo.getLayer().getChildNodes().get(0);
 
