@@ -7,17 +7,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.roger600.lienzo.mockito.LienzoMockitoTestRunner;
+import org.roger600.lienzo.mockito.annotation.Settings;
 import org.roger600.lienzo.mockito.util.EventUtils;
-import org.roger600.lienzo.mockito.util.LienzoMockitoLogger;
 
 
-@RunWith(LienzoMockitoTestRunner.class)
+@RunWith( LienzoMockitoTestRunner.class )
+@Settings( logEnabled = true )
 public class MyLienzoStubsTest {
     
     private MyLienzo myLienzo;
 
     static {
-        LienzoMockitoLogger.enable(System.out);
+        // LienzoMockitoLogger.enable(System.out);
     }
     
     @Before
@@ -30,7 +31,7 @@ public class MyLienzoStubsTest {
         myLienzo.test();
         int size = myLienzo.getLayer().getChildNodes().size();
         String color1 = ( (Rectangle) myLienzo.getLayer().getChildNodes().get(0)).getFillColor();
-        System.out.println("Color1 is: " + color1);
+        System.out.println("Fill color is: " + color1);
         System.out.println("Size is: " + size);
         Assert.assertEquals("#0000FF", color1);
         Assert.assertEquals(1, size);

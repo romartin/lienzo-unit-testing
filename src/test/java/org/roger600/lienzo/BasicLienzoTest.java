@@ -10,9 +10,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.roger600.lienzo.mockito.LienzoMockitoTestRunnerOld;
+import org.roger600.lienzo.mockito.LienzoMockitoTestRunner;
 
-@RunWith(LienzoMockitoTestRunnerOld.class)
+@RunWith(LienzoMockitoTestRunner.class)
 public class BasicLienzoTest {
 
     public class MyLienzo {
